@@ -59,6 +59,7 @@
     <script src="js/jquery.easing.min.js"></script>
     <script type="text/javascript" src="js/fliplightbox.min.js"></script>
     <script src="js/functions.js"></script>
+    <script src="js/custom.js"></script>
 
     <!-------------------------------------------------END-OF-BODY------------------------------------------------->
     </body>
