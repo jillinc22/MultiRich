@@ -21,5 +21,3 @@ function navHighlight(elem, home, active) {
     }
 
 }
-
-navHighlight('.menu a', 'home.php', 'active'); /* menu link selector, home page, highlight class */
