@@ -1,5 +1,6 @@
 <?php require 'nav.php'; ?>
   <!-------------------------------------------------CAROUSEL------------------------------------------------->
+  <!-- Base page(Index)-->
     <div class="slider">
         <div id="about-slider">
             <div id="carousel-slider" class="carousel slide" data-ride="carousel">
