@@ -18,13 +18,17 @@
     <link rel="manifest" href="img/favicon/site.webmanifest">
 
     <!-------------------------------------------------STYLE-LINKS------------------------------------------------->
-
+    <link href="css/style.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/overwrite.css">
     <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" />
+    <!-- <style>
+        .active{
+            color: black !important;
+        }
+    </style> -->
 
     <!-------------------------------------------------SCRIPT------------------------------------------------->
 
@@ -36,12 +40,12 @@
         var valid = true;
 
         if(name == ""){
-        	   valid = false;
+            valid = false;
             document.getElementById('user_error').innerHTML = "required.";
         }
 
         if(password == ""){
-        	   valid = false;
+            valid = false;
             document.getElementById('password_error').innerHTML = "required.";
         }
         return valid;
