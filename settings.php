@@ -1,6 +1,6 @@
 <?php require 'navInside.php'; ?>    
 <body style="font-family: Arial;">
-<div class="demo-content2" style="padding-top: 3em;">
+<div class="demo-content2">
         <h1>Update Account Details</h1>
         <form action="" method="POST"
             onsubmit="return editAccount();">
