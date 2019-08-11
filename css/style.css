@@ -231,13 +231,13 @@ hr {
 
 }
 
+.listProd{
+  border: #252525 2px solid;
+  border-radius: 6px;
+}
+
 .listProd:hover{
-	border-radius: 6px;
-	background: whitesmoke;
-	-webkit-transition: color 300ms, background-color 300ms;
-  -moz-transition: color 300ms, background-color 300ms;
-  -o-transition:  color 300ms, background-color 300ms;
-  transition:  color 300ms, background-color 300ms;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 /**********************************************SLIDER************************************************/
