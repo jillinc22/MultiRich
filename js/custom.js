@@ -1,4 +1,3 @@
-
 window.onload = function(){
     /* menu link selector, home page, highlight class */
     navHighlight('.navbar-nav li a', 'home.php', 'active'); 
@@ -21,3 +20,4 @@ function navHighlight(elem, home, active) {
     }
 
 }
+
