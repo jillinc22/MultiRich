@@ -50,18 +50,22 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="productAddLabel">Add Product<button class="close" data-dismiss="modal">&times;</button></h3>
-          
+          <h3 class="modal-title" id="productAddLabel">
+            Add Product
+            <button class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </h3>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="products/insert.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="prodname">Product Name</label>
-              <input type="text" class="form-control" id="prodname">
+              <input type="text" class="form-control" id="name" required>
             </div>
             <div class="form-group">
               <label for="categ">Product Category</label>
-              <select name="categ">
+              <select name="category" required>
                 <option value="chocolate">Chocolate</option>
                 <option value="rolledwafers">Rolled Wafers</option>
                 <option value="gelatins">Gelatins</option>
@@ -69,17 +73,16 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
             </div>
             <div class="form-group">
               <label for="desc">Product Description</label>
-              <textarea class="form-control" id="desc"></textarea>
+              <textarea class="form-control" id="desc" name="description" required></textarea>
             </div>
             <div class="form-group">
               <label for="fileToUpload">Select Image pf Product: </label>
-              <input type="file" name="fileimage">
+              <input type="file" name="image">
             </div>
-            
           </form>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary btn-block">Submit</button>
+          <input type="submit" name="submit_insert_product" class="btn btn-primary btn-block" value="Submit">
         </div>
       </div>
     </div>

@@ -55,14 +55,14 @@ if (isset($_POST['id'])) {
                     <textarea class="form-control" id="desc" rows="4">"'.$product->prod_desc.'"</textarea>
                     </div>
                     <div class="form-group">
-                    <label for="fileToUpload">Select Image pf Product: </label>
+                    <label for="fileToUpload">Upload image: </label>
                     <input type="file" name="fileimage">
                     </div>
                     
                 </form>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                    <input type="submit" name="submit_insert_product" class="btn btn-primary btn-block" value="Submit">
                 </div>
             </div>
             </div>
