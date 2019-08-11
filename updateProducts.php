@@ -105,6 +105,14 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
               "aria-hidden": false,
               "style": "display: block",
             });
+
+            $('#buttonClose').click(function(){
+              $('#productEditModal').attr({
+                "class": "modal",
+                "aria-hidden": true,
+                "style": "display: hidden",
+              });
+            });
           }
         });
 
