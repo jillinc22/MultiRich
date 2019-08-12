@@ -27,7 +27,7 @@ if (isset($_POST["submit"])) {
 ?>
 
 <?php require 'head.php'; ?>
-<body style="font-family: Arial; text-align: center; background-image: url('img/login.png');">
+<body style="font-family: Arial; text-align: center; background-image: url('img/wood.jpg');">
 <div class="demo-content" style="background-color: white; padding: 3em;">
         <h1>Login Form</h1>
         <form action="" method="POST"

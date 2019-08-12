@@ -46,7 +46,8 @@ h4{
 }
 
 .active {
-  border-bottom: 2px solid #fff !important;
+   background-color: #2bb8ff;
+  color: #fff;
 }
 
 /**********************************************NAVBAR************************************************/
@@ -57,6 +58,10 @@ h4{
   -moz-transition: color 300ms, background-color 300ms;
   -o-transition:  color 300ms, background-color 300ms;
   transition:  color 300ms, background-color 300ms;
+}
+
+#header .navbar-brand{
+  font-size: 2em;
 }
 
 #header a:hover, #header a:focus {
@@ -87,11 +92,11 @@ hr {
 
 /********************************************Header********************************************/
 
-
 .logo2 {
-  width: 3em;
-  height: 2em;
+  width: 2em;
+  height: 1.3em;
   float: left;
+  margin-top: -0.2em;
 }
 
 .navbar-fixed-top .navbar-toggle .icon-bar {
@@ -107,25 +112,28 @@ hr {
   margin:0;
 }
 
+.navbar-header a {
+  font-size: 15px;
+}
+
 .navbar-header a.navbar-brand {
    color:#fff;
    font-family:'Roboto';
 }
 
 .navbar-header a.navbar-brand:hover{
-   color: black;
+   color:#fff;
 }
 
 .navbar {
   border-radius: 0;
-  margin-bottom: 0;
   background: #2bb8ff;
-  padding: 21px 0;
-  padding-bottom: 0;
+  padding: 0;
+  padding-bottom: 0px;
 }
 
 .navbar-nav{
-  margin-top: 12px;
+  margin-top: 1em;
  }
 
  @media (max-width: 767px) {
@@ -138,14 +146,15 @@ hr {
    }
 
    .navbar {
-     padding-bottom: 12px;
+     padding-bottom: 1em;
    }
 
  }
 
 .navbar-nav>li{
   margin-left: 20px;
-  padding-bottom: 28px;
+  padding-bottom: 0.1em;
+  margin-top: 0.8em 
 }
 
 .navbar-fixed-top .navbar-nav > li > a {
@@ -153,10 +162,11 @@ hr {
 	margin: 0;
 	border-radius: 3px;
 	color: #ffd;
-	line-height: 24px;
+	line-height:1em;
 	display: inline-block;
+	text-transform: none;
 	font-weight:500;
-	font-size:20px;
+	font-size:18px;
 	font-family:'Roboto';
 }
 
@@ -171,8 +181,8 @@ hr {
 }
 
 .navbar-fixed-top .navbar-brand {
-  font-size: 26px;
-  line-height: 50px;
+  font-size: 36px;
+  line-height: 1em;
   color: #fff;
 }
 
@@ -188,7 +198,7 @@ hr {
 
 /**********************************************FEATURE**********************************************/
 .feature {
-	padding-top:5em;
+	padding-top:2.5em;
   padding-bottom:5em;
 }
 
@@ -207,8 +217,9 @@ hr {
 
 .feature h1{
   margin-top: 2em;
-  margin-bottom: 1.5em;
-	color:#111;
+  margin-bottom: 1em;
+  color:#111;
+  font-weight: bold;
 }
 
 .feature a{
@@ -220,20 +231,20 @@ hr {
 
 }
 
+.listProd{
+  border: #252525 2px solid;
+  border-radius: 6px;
+}
+
 .listProd:hover{
-	border-radius: 6px;
-	background: whitesmoke;
-	-webkit-transition: color 300ms, background-color 300ms;
-  -moz-transition: color 300ms, background-color 300ms;
-  -o-transition:  color 300ms, background-color 300ms;
-  transition:  color 300ms, background-color 300ms;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 /**********************************************SLIDER************************************************/
 
 .slider {
 	position: relative;
-	padding-top:70px;
+	padding-top:50px;
 }
 
 .slider img {
@@ -293,6 +304,7 @@ hr {
 
 @media (max-width: 767px) {
 
+
   .carousel-caption  h2, .carousel-caption  h2 span {
     font-size: 36px;
   }
@@ -321,6 +333,7 @@ hr {
 }
 
 @media (max-width: 575px) {
+
 
   .carousel-caption  h2, .carousel-caption  h2 span {
     font-size: 22px;
@@ -508,15 +521,18 @@ ul.social-network li a {
   padding: 30px 60px;
   border: #efe3d8 1px solid;
   display: inline-block;
-  margin-top: 10em;
-  margin-left:30em;
+  margin-top: 6em;
+  margin-left:25.5em;
   position: relative;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   
 }
 
 .demo-content2 h1{
   color: #000 !important;
   margin-bottom: 1em;
+  margin-top: 1em;
+  
 }
 
 .demo-content2 input{
@@ -589,7 +605,7 @@ ul.social-network li a {
 /**********************************************UPDATE*TABLE*********************************************/
 
 .prodTable{
-  padding-top: 10em;
+  padding-top: 6em;
 }
 
 .prodTable .card-header a{
@@ -641,4 +657,163 @@ ul.social-network li a {
   float: right;
   margin-top: -2em;
   font-family: sans-serif;
+}
+
+/**********************************************BODY-ABOUT-US*****************************************/
+/**about us main**/
+#about {
+	padding: 100px;
+	background-image: url("../img/wood.jpg");
+}
+
+#about input, textarea {
+	width: 225px;
+}
+
+#about textarea {
+	resize: none;
+}
+
+#about label:hover {
+	color: lightblue;
+}
+
+#about h1 {
+	text-align: center;
+  color: blue;
+  padding-bottom: 1em;
+}
+
+#about dt {
+	font-size: 150%;
+	text-decoration: underline;
+	text-align: center;
+}
+
+/**brief history**/
+
+#briefhistory {
+  padding-left: 1em;
+  padding-top: 7em;
+  padding-bottom: 10em;
+	padding-right: 100px;
+	font-size: large;
+	text-align: center;
+	font-family: "robotic";
+	background-image: url("../img/wood7.jpg");
+	background-size: contain;
+	background-repeat: fixed;
+}
+
+#briefhistory h1 {
+  color: black;
+  padding-top: 1.5em;
+}
+
+#briefhistory p {
+  color: black;
+  padding-bottom: 2em;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+
+/**vison mission**/
+#vision {
+  padding-top: 7em;
+  padding-bottom: 5em;
+	font-size: larger;
+	text-align: center;
+	font-family: "robotic";
+	background-image: url("../img/wood7.jpg");
+	background-repeat: repeat-y;
+	background-position: fixed;
+}
+
+.forBg a{
+  float: right;
+
+}
+
+.forBg{
+  background-color: white;
+}
+
+#vision h1 {
+  color: black;
+  padding-top: 1.5em;
+}
+
+#vision p {
+	color: black;
+	font-size: larger;
+	padding-left: 200px;
+	padding-right: 200px;
+	padding-bottom: 50px;
+}
+
+
+/**core values**/
+#core {
+	padding-top: 150px;
+	padding-bottom: 5em;
+	padding-left: 2em;
+	padding-right: 100px;
+	font-weight: bold;
+  text-align: center;
+  background-image: url("../img/wood7.jpg");
+	background-repeat: repeat-y;
+  background-position: fixed;
+}
+
+#core h1 {
+	color: black;
+	font-family: "robotic";
+	text-align: center;
+}
+
+#core dt {
+	color: black;
+	font-family: "robotic";
+	font-size: larger;
+	text-align: center;
+	font-size: larger
+}
+
+#core h1 {
+	color: black;
+	font-family: "robotic";
+	text-align: center;
+}
+
+#core li {
+	color: black;
+	font-family: "robotic";
+	font-size: larger;
+	text-align: center;
+}
+
+/**Owner Detaisl**/
+
+#details{
+  background-image: url("../img/wood7.jpg");
+  padding-top: 150px;
+	padding-bottom: 5em;
+	padding-left: 2em;
+	padding-right: 100px;
+}
+
+#details h1 {
+  color: black;
+	font-family: "robotic";
+	text-align: center;
+}
+
+#details p {
+	color: black;
+	font-size: larger;
+  padding-bottom: 50px;
+  padding-left: 3em;
+	padding-right: 3em;
+	font-family: "robotic";
 }

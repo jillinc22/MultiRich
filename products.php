@@ -29,8 +29,8 @@ $gelproducts = $s3->fetchAll(PDO::FETCH_OBJ);
 <div class="feature">
     <div class="container">
       <div class="row">
-        <div class="text-center">
-          <h1>Category:</h1>
+        <div class="">
+          <h1>CATEGORY</h1>
         </div>
         <div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
           <div class="text-center">
