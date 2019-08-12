@@ -12,7 +12,6 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
     <div class="card-header">
       <h2>All Products<a href="" class="btn btn-info" data-toggle="modal" data-target="#productAddModal">Add Product</a></h2>	
 
-      
     </div>
     <div class="card-body">
       <table class="table table-bordered">
@@ -57,7 +56,7 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
             </button>
           </h3>
         </div>
-        <form action="products/insert.php" method="post" enctype="multipart/form-data">
+        <form action="insertProduct.php" method="post" enctype="multipart/form-data">
           <div class="modal-body">
               <div class="form-group">
                 <label for="prodname">Product Name</label>
@@ -77,7 +76,7 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
               </div>
               <div class="form-group">
                 <label for="fileToUpload">Select Image pf Product: </label>
-                <input type="file" name="image">
+                <input type="file" name="fileimage">
               </div>
           </div>
           <div class="modal-footer">

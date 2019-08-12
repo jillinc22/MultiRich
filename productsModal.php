@@ -40,26 +40,25 @@ if (isset($_POST['id'])) {
                 </div>
                 <form action"producs/update.php" method="POST">
                     <div class="modal-body">
-                            <input type="text" class="form-control" id="prodid" name="id" value="'.$product->prod_id.'" required hidden>
+                            <input type="text" class="form-control" id="prodid" name="id" style="display: none;" value="'.$product->prod_id.'" required>
                         <div class="form-group">
                             <label for="prodname">Product Name</label>
                             <input type="text" class="form-control" id="prodname" name="name" value="'.$product->prod_name.'" required>
                         </div>
                         <div class="form-group">
-                        <label for="categ">Product Category</label>
-                        <select name="categ" required>
-                        '.$categoryOption.'
-                        </select>
+                            <label for="categ">Product Category</label>
+                            <select name="category" required>
+                            '.$categoryOption.'
+                            </select>
                         </div>
                         <div class="form-group">
-                        <label for="desc">Product Description</label>
-                        <textarea class="form-control" id="desc" rows="4" required>"'.$product->prod_desc.'"</textarea>
+                            <label for="desc">Product Description</label>
+                            <textarea class="form-control" name="description" id="desc" rows="4" required>"'.$product->prod_desc.'"</textarea>
                         </div>
                         <div class="form-group">
-                        <label for="fileToUpload">Upload image: </label>
-                        <input type="file" name="fileimage">
+                            <label for="fileToUpload">Upload image: </label>
+                            <input type="file" name="fileimage">
                         </div>
-                        
                     </div>
                     <div class="modal-footer">
                         <input type="submit" name="btn_update_product" class="btn btn-primary btn-block" value="Submit">

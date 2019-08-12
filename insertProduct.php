@@ -22,7 +22,7 @@ if (isset($_POST['btn_insert_product'])) {
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header('Location: ../updateProducts.php?error=sqlerror');
+            header('Location: ./updateProducts.php?error=sqlerror');
             exit();
         }
         else {
@@ -32,7 +32,7 @@ if (isset($_POST['btn_insert_product'])) {
 
             uploadProductImage($conn);
 
-            // header('Location: ../updateProducts.php?success=productAdded');
+            // header('Location: ./updateProducts.php?success=productAdded');
             // exit();
         }
     } else {
@@ -44,7 +44,7 @@ if (isset($_POST['btn_insert_product'])) {
     mysqli_close($conn);
 }
 else {
-    header('Location: ../updateProducts.php');
+    header('Location: ./updateProducts.php');
     exit();
 }
 
@@ -103,7 +103,16 @@ function uploadProductImage($connection){
           $sqlUpdateImgName = "UPDATE tbl_prod SET prod_imagePath = '$strFileNameNew' WHERE prod_id = '$intLatestId';";
           $stmtUpdate = $connection->prepare($sqlUpdateImgName);
           $stmtUpdate->execute();
-          $strFileDestination = '../img/prods/'.$strFileNameNew;
+
+        //   $destination_path = getcwd().DIRECTORY_SEPARATOR;
+        //   var_dump($destination_path);
+        //   var_dump(basename( $_FILES["fileimage"]["name"]));
+        //   $target_path = $destination_path . '/img/prods/' .basename( $_FILES["fileimage"]["name"]);
+        //   @move_uploaded_file($_FILES['fileimage']['tmp_name'], $target_path);
+
+          $destination_path = getcwd().DIRECTORY_SEPARATOR;
+
+          $strFileDestination = $destination_path.'/img/prods/'.$strFileNameNew;
           move_uploaded_file($strFileTmpName, $strFileDestination);
         }
         else {
