@@ -75,7 +75,7 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
                 <textarea class="form-control" rows="4" id="desc" name="description" required></textarea>
               </div>
               <div class="form-group">
-                <label for="fileToUpload">Select Image pf Product: </label>
+                <label for="fileToUpload">Select Image of Product: </label>
                 <input type="file" name="fileimage">
               </div>
           </div>
@@ -94,14 +94,12 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
 
   <script>
       function prefillEditModal(productId){
-        console.log(`${productId}`);
         $.ajax({
           url:"productsModal.php",
           method:"post",
           data:{id:productId},
           success:function(data)
           {
-            console.log(data);
             $('#updateModal').html(data);
             $('#productEditModal').attr({
               "class": "modal fade in",
@@ -119,6 +117,12 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
           }
         });
 
+      }
+
+      const updateModal = document.querySelector('#updateModal');
+
+      if (element.hasChildNodes()) {
+        console.log('meron');
       }
 
   </script>

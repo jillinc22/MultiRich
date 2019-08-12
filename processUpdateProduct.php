@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['btn_insert_product'])) {
+if (isset($_POST['btn_update_product'])) {
     /**
      * Setup db connection
      */
@@ -11,14 +11,15 @@ if (isset($_POST['btn_insert_product'])) {
     }
 
     /**
-     * Insert product
+     * Update product
      */
+    $id = $_POST['id'];
     $name = $_POST['name'];
     $category = $_POST['category'];
     $description = $_POST['description'];
 
-    if (!empty($name) || !empty($category) || !empty($description)) {
-        $sql = "INSERT INTO tbl_prod(prod_name, prod_categ, prod_desc, prod_imagePath) VALUES(?, ?, ?, ?)";
+    if (!empty($id) || !empty($name) || !empty($category) || !empty($description)) {
+        $sql = "UPDATE tbl_prod SET prod_name = ?, prod_categ = ?, prod_desc = ? WHERE prod_id = ?";
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -26,11 +27,17 @@ if (isset($_POST['btn_insert_product'])) {
             exit();
         }
         else {
-            $sampleImagePath = 'SampleImagePathh';
-            mysqli_stmt_bind_param($stmt, 'ssss', $name, $category, $description, $sampleImagePath);
+            mysqli_stmt_bind_param($stmt, 'ssss', $name, $category, $description, $id);
             mysqli_stmt_execute($stmt);
 
-            uploadProductImage($conn);
+            // Upload image
+            if ($_FILES['fileimage']) {
+                uploadProductImage($conn, $id);
+            } else {
+                header('Location: ./updateProducts.php?success=prodcutUpdateV1');
+                exit();
+            }
+            
         }
     } else {
         header('Location: ./updateProducts.php?error=emptyfields');
@@ -45,8 +52,9 @@ else {
     exit();
 }
 
+
 # Upload player's profile photo
-function uploadProductImage($connection){
+function uploadProductImage($connection, $id){
     /*steps
     1. get vars for file array elems
     2. explode filename "explode('.', $filename)"
@@ -85,24 +93,22 @@ function uploadProductImage($connection){
             }
             // set the fetched data to object
             $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-            //
             // include 'db-connect2';
           //insert fileNameNew to product table
-          $sql = 'SELECT * FROM tbl_prod WHERE prod_id = (SELECT MAX(prod_id) FROM tbl_prod);';
+          $sql = "SELECT * FROM tbl_prod WHERE prod_id = '$id';";
           $stmt = $connection->prepare($sql);
           $stmt->execute();
           $product = $stmt->fetch();
           $strFileNameNew = "photo_".$product->prod_name."_".time().".".$strFileActualExt;
-          $intLatestId = $product->prod_id;
-          $sqlUpdateImgName = "UPDATE tbl_prod SET prod_imagePath = '$strFileNameNew' WHERE prod_id = '$intLatestId';";
+          $sqlUpdateImgName = "UPDATE tbl_prod SET prod_imagePath = '$strFileNameNew' WHERE prod_id = '$id';";
           $stmtUpdate = $connection->prepare($sqlUpdateImgName);
           $stmtUpdate->execute();
-
+  
           $destination_path = getcwd().DIRECTORY_SEPARATOR;
+  
           $strFileDestination = $destination_path.'/img/prods/'.$strFileNameNew;
           move_uploaded_file($strFileTmpName, $strFileDestination);
-
-          header('Location: ./updateProducts.php?success=productAdded');
+          header('Location: ./updateProducts.php?success=productUpdated');
           exit();
         }
         else {
@@ -117,4 +123,3 @@ function uploadProductImage($connection){
           echo '<script type="text/javascript">alert("File error uploading!");</script>';
     }
   }
-  
