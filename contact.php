@@ -9,14 +9,8 @@ if (isset ($_POST['msg_name'])  && isset($_POST['msg_email']) && isset($_POST['m
   $sql = 'INSERT INTO tbl_message(msg_name, msg_email, msg_text) VALUES(:msg_name, :msg_email, :msg_text)';
   $statement = $connection->prepare($sql);
   if ($statement->execute([':msg_name' => $msg_name, ':msg_email' => $msg_email,':msg_text' => $msg_text])) {
-    echo alert("Successfully Sent");
     header('location: contact.php');
   }
- else {
-  echo '<script language="javascript">';
-  echo 'alert("Error in Sending");"';
-  echo '</script>';
-}
 }
 ?>
 
@@ -67,3 +61,4 @@ if (isset ($_POST['msg_name'])  && isset($_POST['msg_email']) && isset($_POST['m
 
 <!-----------------------------------------END-OF-CONTENT------------------------------------------------>
 <?php require 'footer.php'; ?>
+<script src="js/script.js"></script>
