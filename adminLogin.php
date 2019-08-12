@@ -4,8 +4,8 @@ if (isset($_POST["submit"])) {
     include_once 'db-connect.php';
     
     $name = $_POST['name'];
-    $password = $_POST['password'];
-    // $password = md5($_POST['password']);
+    // $password = $_POST['password'];
+    $password = md5($_POST['password']);
     
     $database = new dbConnect();
     
