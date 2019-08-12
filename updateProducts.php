@@ -57,33 +57,34 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
             </button>
           </h3>
         </div>
-        <div class="modal-body">
-          <form action="products/insert.php" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="prodname">Product Name</label>
-              <input type="text" class="form-control" id="name" required>
-            </div>
-            <div class="form-group">
-              <label for="categ">Product Category</label>
-              <select name="category" required>
-                <option value="chocolate">Chocolate</option>
-                <option value="rolledwafers">Rolled Wafers</option>
-                <option value="gelatins">Gelatins</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="desc">Product Description</label>
-              <textarea class="form-control" id="desc" name="description" required></textarea>
-            </div>
-            <div class="form-group">
-              <label for="fileToUpload">Select Image pf Product: </label>
-              <input type="file" name="image">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <input type="submit" name="submit_insert_product" class="btn btn-primary btn-block" value="Submit">
-        </div>
+        <form action="products/insert.php" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="prodname">Product Name</label>
+                <input type="text" class="form-control" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="categ">Product Category</label>
+                <select name="category" required>
+                  <option value="chocolate">Chocolate</option>
+                  <option value="rolledwafers">Rolled Wafers</option>
+                  <option value="gelatins">Gelatins</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="desc">Product Description</label>
+                <textarea class="form-control" id="desc" name="description" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="fileToUpload">Select Image pf Product: </label>
+                <input type="file" name="image">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" name="submit_insert_product" class="btn btn-primary btn-block" value="Submit">
+          </div>
+        </form>
+
       </div>
     </div>
   </div>

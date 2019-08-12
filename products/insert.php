@@ -3,7 +3,7 @@
 /**
  * Establish database connection
  */
-require 'db-connect2.php';
+require '../db-connect2.php';
 
 if (isset($_POST['submit_insert_product'])) {
     $id = $_POST['id'];
