@@ -1,6 +1,6 @@
 <?php
 require 'db-connect2.php';
-$sql = 'SELECT * FROM tbl_prod ORDER BY prod_dateAdded';
+$sql = 'SELECT * FROM tbl_prod ORDER BY prod_dateAdded desc';
 $statement = $connection->prepare($sql);
 $statement->execute();
 $product = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -12,7 +12,6 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
     <div class="card-header">
       <h2>All Products<a href="" class="btn btn-info" data-toggle="modal" data-target="#productAddModal">Add Product</a></h2>	
 
-      
     </div>
     <div class="card-body">
       <table class="table table-bordered">
@@ -57,33 +56,34 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
             </button>
           </h3>
         </div>
-        <div class="modal-body">
-          <form action="products/insert.php" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="prodname">Product Name</label>
-              <input type="text" class="form-control" id="name" required>
-            </div>
-            <div class="form-group">
-              <label for="categ">Product Category</label>
-              <select name="category" required>
-                <option value="chocolate">Chocolate</option>
-                <option value="rolledwafers">Rolled Wafers</option>
-                <option value="gelatins">Gelatins</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="desc">Product Description</label>
-              <textarea class="form-control" id="desc" name="description" required></textarea>
-            </div>
-            <div class="form-group">
-              <label for="fileToUpload">Select Image pf Product: </label>
-              <input type="file" name="image">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <input type="submit" name="submit_insert_product" class="btn btn-primary btn-block" value="Submit">
-        </div>
+        <form action="insertProduct.php" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="prodname">Product Name</label>
+                <input type="text" name="name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="categ">Product Category</label>
+                <select name="category" required>
+                  <option value="Chocolate">Chocolate</option>
+                  <option value="Rolled Wafers">Rolled Wafers</option>
+                  <option value="Gelatins">Gelatins</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="desc">Product Description</label>
+                <textarea class="form-control" rows="4" id="desc" name="description" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="fileToUpload">Select Image pf Product: </label>
+                <input type="file" name="fileimage">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" name="btn_insert_product" class="btn btn-primary btn-block" value="Submit">
+          </div>
+        </form>
+
       </div>
     </div>
   </div>
