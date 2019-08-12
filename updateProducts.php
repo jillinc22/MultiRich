@@ -1,6 +1,6 @@
 <?php
 require 'db-connect2.php';
-$sql = 'SELECT * FROM tbl_prod ORDER BY prod_dateAdded';
+$sql = 'SELECT * FROM tbl_prod ORDER BY prod_dateAdded desc';
 $statement = $connection->prepare($sql);
 $statement->execute();
 $product = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -61,19 +61,19 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
           <div class="modal-body">
               <div class="form-group">
                 <label for="prodname">Product Name</label>
-                <input type="text" class="form-control" name="name" required>
+                <input type="text" name="name" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="categ">Product Category</label>
                 <select name="category" required>
-                  <option value="chocolate">Chocolate</option>
-                  <option value="rolledwafers">Rolled Wafers</option>
-                  <option value="gelatins">Gelatins</option>
+                  <option value="Chocolate">Chocolate</option>
+                  <option value="Rolled Wafers">Rolled Wafers</option>
+                  <option value="Gelatins">Gelatins</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="desc">Product Description</label>
-                <textarea class="form-control" id="desc" name="description" required></textarea>
+                <textarea class="form-control" rows="4" id="desc" name="description" required></textarea>
               </div>
               <div class="form-group">
                 <label for="fileToUpload">Select Image pf Product: </label>
@@ -81,7 +81,7 @@ $product = $statement->fetchAll(PDO::FETCH_OBJ);
               </div>
           </div>
           <div class="modal-footer">
-            <input type="submit" name="submit_insert_product" class="btn btn-primary btn-block" value="Submit">
+            <input type="submit" name="btn_insert_product" class="btn btn-primary btn-block" value="Submit">
           </div>
         </form>
 

@@ -1,25 +1,29 @@
 <?php
 require 'db-connect2.php';
+
+session_start();
+
 if(isset($_GET['name'])){
 
     $user = $_GET['name'];
     $get_user =  $mysqli->query("SELECT * FROM tbl_account WHERE name = '$user'");
     if ($get_user->num_rows == 1) {            
         $user_data = $get_user->fetch_assoc();        
-        }    
+    }
+    echo $get_user, $user_data;    
 }
- ?>
+?>
 
 <?php require 'navInside.php'; ?>    
 <body style="font-family: Arial;">
     <div class="demo-content2">
         <h1>Change Account Details</h1>
-        <form method="POST" action="updateAction.php?user=<?php echo $user_data['name'] ?>">
+        <form method="POST" action="updateAction.php?user=<?php echo $_SESSION['name'] ?>">
 
             <div class="row">
                 <label>Username *</label> <span id="user_error"></span>
                 <div>
-                    <input type="text" name="name" id="name" class="form-control" value="<?php echo $user_data['name'] ?>" placeholder="Enter New Username" required>
+                    <input type="text" name="name" id="name" class="form-control" value="<?php echo $_SESSION['name'] ?>" placeholder="Enter New Username" required>
                 </div>
             </div>
 
