@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 10, 2019 at 04:27 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Host: localhost
+-- Generation Time: Aug 12, 2019 at 06:02 PM
+-- Server version: 10.3.15-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,7 +40,8 @@ CREATE TABLE `tbl_account` (
 --
 
 INSERT INTO `tbl_account` (`id`, `name`, `password`, `email`) VALUES
-(1, 'adMinUser127001', 'df9eb3cec627f7f63a362e5cc9de97ea', 'admin@mail.com');
+(1, 'adMinUser127001', 'df9eb3cec627f7f63a362e5cc9de97ea', 'admin@mail.com'),
+(2, 'admin', '1234', 'admin@admin.com');
 
 -- --------------------------------------------------------
 
@@ -52,7 +53,7 @@ CREATE TABLE `tbl_career` (
   `car_id` int(11) NOT NULL,
   `car_position` varchar(255) NOT NULL,
   `car_description` varchar(255) NOT NULL,
-  `car_dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `car_dateAdded` timestamp NOT NULL DEFAULT current_timestamp(),
   `car_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -75,7 +76,7 @@ CREATE TABLE `tbl_message` (
   `msg_email` varchar(255) NOT NULL,
   `msg_type` varchar(50) NOT NULL,
   `msg_text` varchar(255) NOT NULL,
-  `msg_dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `msg_dateAdded` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -97,7 +98,7 @@ CREATE TABLE `tbl_prod` (
   `prod_categ` varchar(50) NOT NULL,
   `prod_desc` varchar(255) NOT NULL,
   `prod_imagePath` varchar(255) NOT NULL,
-  `prod_dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `prod_dateAdded` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -107,7 +108,9 @@ CREATE TABLE `tbl_prod` (
 INSERT INTO `tbl_prod` (`prod_id`, `prod_name`, `prod_categ`, `prod_desc`, `prod_imagePath`, `prod_dateAdded`) VALUES
 (1, 'Choco Mucho', 'Chocolate', 'Choco Mucho offers Heavenly Indulgence with its luscious chocolate and complementing layers of ingredients. Experience Heaven with every bite of the different variant offerings that suit every craving. With Choco Mucho, you\'re sure to give in to Pure Choc', 'chocomucho.png', '2019-08-06 16:02:11'),
 (4, 'Superstix', 'Rolled Wafers', 'Cream-filled wafer', 'superstix.png', '2019-08-07 05:03:13'),
-(5, 'Jiggels', 'Gelatins', 'Soft and chewy', 'jiggels.png', '2019-08-07 05:03:13');
+(5, 'Jiggels', 'Gelatins', 'Soft and chewy', 'jiggels.png', '2019-08-07 05:03:13'),
+(6, 'samplelang', 'rolledwafers', 'sdadafsds', 'SampleImagePathh', '2019-08-12 14:06:51'),
+(7, 'Jill', 'Gelatins', 'Jill description', 'SampleImagePathh', '2019-08-12 14:22:37');
 
 --
 -- Indexes for dumped tables
@@ -135,8 +138,7 @@ ALTER TABLE `tbl_message`
 -- Indexes for table `tbl_prod`
 --
 ALTER TABLE `tbl_prod`
-  ADD PRIMARY KEY (`prod_id`),
-  ADD UNIQUE KEY `prod_name` (`prod_name`);
+  ADD PRIMARY KEY (`prod_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -146,7 +148,7 @@ ALTER TABLE `tbl_prod`
 -- AUTO_INCREMENT for table `tbl_account`
 --
 ALTER TABLE `tbl_account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_career`
@@ -164,7 +166,7 @@ ALTER TABLE `tbl_message`
 -- AUTO_INCREMENT for table `tbl_prod`
 --
 ALTER TABLE `tbl_prod`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
