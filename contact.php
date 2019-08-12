@@ -1,5 +1,23 @@
 <?php
 require 'db-connect2.php';
+
+$message = '';
+if (isset ($_POST['msg_name'])  && isset($_POST['msg_email']) && isset($_POST['msg_text'])) {
+  $msg_name = $_POST['msg_name'];
+  $msg_email = $_POST['msg_email'];
+  $msg_text = $_POST['msg_text'];
+  $sql = 'INSERT INTO tbl_message(msg_name, msg_email, msg_text) VALUES(:msg_name, :msg_email, :msg_text)';
+  $statement = $connection->prepare($sql);
+  if ($statement->execute([':msg_name' => $msg_name, ':msg_email' => $msg_email,':msg_text' => $msg_text])) {
+    echo alert("Successfully Sent");
+    header('location: contact.php');
+  }
+ else {
+  echo '<script language="javascript">';
+  echo 'alert("Error in Sending");"';
+  echo '</script>';
+}
+}
 ?>
 
 <?php require 'nav.php'; ?>
@@ -7,9 +25,8 @@ require 'db-connect2.php';
 		
 <!-- CONTACT -->
 <section id="message" class="bg-faded py-5">
-	<form action="" medthod="POST" enctype="multipart/form-data">
     <div class="container">
-	<?php if(!empty($message)): ?>
+		<?php if(!empty($message)): ?>
         <div class="alert alert-success">
           <?= $message; ?>
         </div>
@@ -18,13 +35,14 @@ require 'db-connect2.php';
         <div class="col-lg-9">
           <h2>Get In Touch</h2>
           <p class="lead">* Intended for inquiries/suggestions only</p>
-          <form>
+          <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <div class="input-group input-group-lg">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="text" class="form-control" placeholder="Name" name="msg_name" id="msg_name">
               </div>
             </div>
+          
             <div class="form-group">
               <div class="input-group input-group-lg">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -37,7 +55,7 @@ require 'db-connect2.php';
                 <textarea class="form-control" placeholder="Message" rows="5" name="msg_text" id="msg_text"></textarea>
               </div>
             </div>
-            <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
+            <button type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">Submit</button>
           </form>
         </div>
         <div class="col-lg-3 align-self-center">
@@ -45,21 +63,7 @@ require 'db-connect2.php';
         </div>
       </div>
 	</div>
-	</form>
   </section>
 
 <!-----------------------------------------END-OF-CONTENT------------------------------------------------>
 <?php require 'footer.php'; ?>
-
-<?php
-$message = 'Cannot be registered';
-if (isset ($_POST['msg_name'])  && isset($_POST['msg_email']) && isset($_POST['msg_text'])) {
-  $msg_name = $_POST['msg_name'];
-  $msg_email = $_POST['msg_email'];
-  $msg_text = $_POST['msg_text'];
-
-  $sql = "INSERT INTO tbl_account (msg_name, msg_email, msg_text) VALUES (?,?,?)";
-  $stmt= $connection->prepare($sql);
-  $stmt->execute([$msg_name, $msg_email, $msg_text]);
-}
-?>
