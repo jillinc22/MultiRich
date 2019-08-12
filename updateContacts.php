@@ -1,6 +1,6 @@
 <?php
 require 'db-connect2.php';
-$sql = 'SELECT * FROM tbl_message ORDER BY msg_dateAdded';
+$sql = 'SELECT * FROM tbl_message ORDER BY msg_dateAdded DESC';
 $statement = $connection->prepare($sql);
 $statement->execute();
 $message = $statement->fetchAll(PDO::FETCH_OBJ);

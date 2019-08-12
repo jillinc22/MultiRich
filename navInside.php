@@ -26,7 +26,6 @@ if(!isset($_SESSION['name'])){
                         
                         <li><a href="updateProducts.php">Products</a></li>
                         <li><a href="updateContacts.php">Message</a></li>
-                        <li><a href="settings.php">Settings</a></li>
                         <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
