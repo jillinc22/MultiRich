@@ -210,7 +210,8 @@ hr {
   background-color: transparent;
   border: none;
   padding: 0;
-  
+  padding-left: -10em;
+  padding-right: -10em;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
@@ -816,4 +817,16 @@ ul.social-network li a {
   padding-left: 3em;
 	padding-right: 3em;
 	font-family: "robotic";
+}
+
+/***********************************************MESSAGE**********************************************/
+
+#message{
+  padding-top: 8em;
+  padding-bottom: 8em;
+}
+
+#message img{
+  width: 17em;
+  height: 12em;
 }

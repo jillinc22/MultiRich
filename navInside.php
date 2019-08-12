@@ -25,7 +25,6 @@ if(!isset($_SESSION['name'])){
                     <ul class="nav navbar-nav">
                         
                         <li><a href="updateProducts.php">Products</a></li>
-                        <li><a href="updateCareers.php">Careers</a></li>
                         <li><a href="updateContacts.php">Message</a></li>
                         <li><a href="settings.php">Settings</a></li>
                         <li><a href="logout.php">Logout</a></li>
