@@ -18,8 +18,9 @@ if (isset($_POST["submit"])) {
     $id = $result[0]['id'];
     $name = $result[0]['name'];
     $email = $result[0]['email'];
-    $_SESSION['name'] = $name;
     $_SESSION['id'] = $id;
+    $_SESSION['name'] = $name;
+    $_SESSION['password'] = $password;
     
     $database->closeConnection();
     header('location: dashboard.php');
