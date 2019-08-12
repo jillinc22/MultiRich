@@ -1,98 +1,65 @@
 <?php
-
-if($_POST) {
-	
-	$name = $_POST['name'];
-	$emailaddress = $_POST['emailaddress'];
-	$contactnumber = $_POST['contactnumber'];
-	$message = $_POST['message'];
-	
-	if($name == "") {
-		echo " * Name is Required <br />";
-	}
-	
-	 if($emailaddress == "") {
-		 echo " * Email Address is Required <br />";
-	 }
-
-	if($contactnumber == "") {
-		echo " * Contact Number is Required <br />";
-	}
-	
-	if($message == "") {
-		echo " * Message is Required <br />";
-	}
-	
-	else {
-				if(registerUser() === TRUE) {
-					echo "Succesfully Submitted <a href='contact.php'>Contact</a>";
-				} 
-				else {
-					echo "Error";
-				}
-		}
-		
-	
-			
-}
+require 'db-connect2.php';
 ?>
+
 <?php require 'nav.php'; ?>
 <!----------------------------------------START-OF-CONTENT---------------------------------------------->
 		
-		<div id="contact1">
-			<div> 
-				<form id="login" action="" method="get" target="self">
-				<h1>CONTACT US</h1>
-					<p>* Intended for inquiries/suggestions only</p>
-					<br>
-				<label for="">Name</label>
-					<br>
-					<input type="text" name="name">
-					<br>
-				<label for="">Email Address</label>
-					<br>
-					<input type="email">
-					<br>
-				<label for="">Contact number</label>
-					<br>
-					<input type="text">
-					<br>
-					<label for="">Message</label>
-					<br>
-					<textarea name="" id="" cols="30" rows="10"></textarea>
-					<br>
-					<button type="submit">Submit</button>
-					</form>
-			</div>
-		</div>
+<!-- CONTACT -->
+<section id="message" class="bg-faded py-5">
+	<form action="" medthod="POST" enctype="multipart/form-data">
+    <div class="container">
+	<?php if(!empty($message)): ?>
+        <div class="alert alert-success">
+          <?= $message; ?>
+        </div>
+      <?php endif; ?>
+      <div class="row">
+        <div class="col-lg-9">
+          <h2>Get In Touch</h2>
+          <p class="lead">* Intended for inquiries/suggestions only</p>
+          <form>
+            <div class="form-group">
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" placeholder="Name" name="msg_name" id="msg_name">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input type="email" class="form-control" placeholder="Email" name="msg_email" id="msg_email">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                <textarea class="form-control" placeholder="Message" rows="5" name="msg_text" id="msg_text"></textarea>
+              </div>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
+          </form>
+        </div>
+        <div class="col-lg-3 align-self-center">
+          <img src="img/multiLogo.png" class="img-fluid hidden-md-down" alt="">
+        </div>
+      </div>
+	</div>
+	</form>
+  </section>
 
 <!-----------------------------------------END-OF-CONTENT------------------------------------------------>
 <?php require 'footer.php'; ?>
 
-<?php 
-	require 'db_connect.php'; 
-	session-start();
+<?php
+$message = 'Cannot be registered';
+if (isset ($_POST['msg_name'])  && isset($_POST['msg_email']) && isset($_POST['msg_text'])) {
+  $msg_name = $_POST['msg_name'];
+  $msg_email = $_POST['msg_email'];
+  $msg_text = $_POST['msg_text'];
 
-function registerUser() {
-	
-	global $connect;
-	
-	$name = $_POST['name'];
-	$emailaddress = $_POST['emailaddress'];
-	$contactnumber = $_POST['contactnumber'];
-	$message = $_POST['message'];
-
-		$sql = "INSERT INTO users
-		(msg_name, emailaddress, contactnumber, message)
-		VALUES ('$name', '$emailaddress', '$contactnumber', '$message)";
-		$query = $connect->query($sql);
-		if($query === TRUE) {
-			return true;
-		} else {
-			return false;
-		}
-	
-	$connect->close();
-	// close the database connection
+  $sql = "INSERT INTO tbl_account (msg_name, msg_email, msg_text) VALUES (?,?,?)";
+  $stmt= $connection->prepare($sql);
+  $stmt->execute([$msg_name, $msg_email, $msg_text]);
 }
 ?>
