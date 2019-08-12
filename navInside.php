@@ -3,10 +3,8 @@ session_start();
 if(!isset($_SESSION['name'])){
     header('location:home.php');
 }
-
 ?>
 <?php require 'head.php'; ?>
-
 <body>
 <header id="header">
         <nav class="navbar navbar-fixed-top" role="banner">

@@ -1,4 +1,4 @@
-
+  <footer>
     <div class="social-icon">
       <div class="container">
         <div class="col-md-6 col-md-offset-3">
